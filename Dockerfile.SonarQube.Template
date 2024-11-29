@@ -1,0 +1,31 @@
+# Dockerfile.SonarQube.Template
+
+
+# Usar a imagem oficial do Node.js
+FROM node:14
+
+# Nome unico do projeto no SonarQube.
+ARG PACKAGE
+
+# Definir o diretório de trabalho
+WORKDIR /app
+
+# Copiar os arquivos package.json e package-lock.json
+COPY "${PACKAGE}" ./
+
+# Instalar as dependências do projeto
+RUN npm install sonarqube-scanner
+
+# Copiar todo o projeto
+COPY . .
+
+# Instalar o SonarQube Scanner como dependência global
+RUN npm install -g sonarqube-scanner
+
+# Copiar o arquivo de configuração do SonarQube
+COPY sonar-project.properties ./
+
+# Comando para executar o SonarQube Scanner
+RUN npx sonarqube-scanner
+
+CMD ["npm", "start"]
