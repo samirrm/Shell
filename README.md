@@ -1,2 +1,2 @@
 # Shell
-Repositório para armazenar meus scripts PowerShell
+Repositório para armazenar meus scripts Shell
