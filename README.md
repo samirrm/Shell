@@ -1,2 +1,2 @@
 # Shell
-Repositório para armazenar meus scripts Shell
+Repositório para armazenar scripts Shell
